@@ -1,0 +1,8 @@
+[package]
+name = "system"
+version = "0.1.0"
+description = "Trait for the Command struct to conveniently run system commands, like the C system function."
+repository = "https://www.github.com/BrandonXLF/system/"
+edition = "2021"
+license = "MIT"
+readme = "README.md"
