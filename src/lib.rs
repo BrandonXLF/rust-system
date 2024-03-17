@@ -25,6 +25,6 @@ impl System<Command> for Command {
     }
 }
 
-fn main() {
-    let _ = Command::system("echo Hello!").status();
+pub fn system(command: &str) -> io::Result<Output> {
+    Command::system(command).output()
 }
