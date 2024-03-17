@@ -1,6 +1,6 @@
 [package]
 name = "system"
-version = "0.2.1"
+version = "0.3.0"
 description = "Crate to easily run system/shell commands across different platforms."
 repository = "https://github.com/BrandonXLF/rust-system/"
 edition = "2021"
