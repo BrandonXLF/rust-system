@@ -1,7 +1,7 @@
 [package]
 name = "system"
 version = "0.1.0"
-description = "Trait for the Command struct to conveniently run system commands, like the C system function."
+description = "Crate to easily run system/shell commands across different platforms."
 repository = "https://www.github.com/BrandonXLF/system/"
 edition = "2021"
 license = "MIT"
