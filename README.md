@@ -6,19 +6,20 @@ Crate to easily run system/shell commands across different platforms, similar to
 
 ### `system`
 
-For simple use cases where you just need the output of a system command, the `system` can be used.
+For simple use cases where you just need the output of a system command, the `system` function can be used.
 
 ```rust
 use system::system;
 
 fn main() {
     let out = system("echo Hello, world!").expect("Failed to run command.");
+    let stdout = String::from_utf8_lossy(&out.stdout);
 
     #[cfg(target_os = "windows")]
-    assert_eq!(String::from_utf8_lossy(&out.stdout), "Hello, world!\r\n");
+    assert_eq!(stdout, "Hello, world!\r\n");
 
     #[cfg(not(target_os = "windows"))]
-    assert_eq!(String::from_utf8_lossy(&out.stdout), "Hello, world!\n");
+    assert_eq!(stdout, "Hello, world!\n");
 }
 ```
 
@@ -31,13 +32,20 @@ The trait adds the function `Command::system` to create `Command`s that execute 
 For example,
 
 ```rust
+use std::process::Command;
+
+use system::System;
+
+fn test() {
     let out = Command::system("echo Hello, world!")
         .output()
         .expect("Failed to run command.");
+    let stdout = String::from_utf8_lossy(&out.stdout);
 
     #[cfg(target_os = "windows")]
-    assert_eq!(String::from_utf8_lossy(&out.stdout), "Hello, world!\r\n");
+    assert_eq!(stdout, "Hello, world!\r\n");
 
     #[cfg(not(target_os = "windows"))]
-    assert_eq!(String::from_utf8_lossy(&out.stdout), "Hello, world!\n");
+    assert_eq!(stdout, "Hello, world!\n");
+}
 ```
