@@ -4,15 +4,26 @@ Crate to easily run system/shell commands across different platforms, similar to
 
 ## Usage
 
-### `system`
+### `system` and `system_capture`
 
-For simple use cases where you just need the output of a system command, the `system` function can be used.
+For simple use cases where you just need the result of a system command, the `system` and `system_capture` functions can be used.
+
+`system` inherits the stdout, stderr, and stdin from the parent process whereas `system_capture` captures the stdout, stderr, and does not inherit a stdin.  
 
 ```rust
 use system::system;
 
 fn main() {
-    let out = system("echo Hello, world!").expect("Failed to run command.");
+    // Prints "Hello, world!"
+    system("echo Hello, world!").expect("Failed to run command.");
+}
+```
+
+```rust
+use system::system_output;
+
+fn main() {
+    let out = system_output("echo Hello, world!").expect("Failed to run command.");
     let stdout = String::from_utf8_lossy(&out.stdout);
 
     #[cfg(target_os = "windows")]

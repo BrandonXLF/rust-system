@@ -2,7 +2,7 @@
 
 use std::{
     io,
-    process::{Command, Output},
+    process::{Command, ExitStatus, Output},
 };
 
 #[cfg(target_os = "windows")]
@@ -79,14 +79,33 @@ impl System<Command> for Command {
     }
 }
 
-/// Run a system/shell command and return the [Output].
+/// Run a system/shell command and return the [ExitStatus].
+///
+/// Stdin, stdout and stderr are inherited from the parent.
 ///
 /// # Example
 /// ```rust
 /// use system::system;
 ///
 /// fn main() {
-///     let out = system("echo Hello, world!").expect("Failed to run command.");
+///     // Prints "Hello, world!"
+///     system("echo Hello, world!").expect("Failed to run command.");
+/// }
+/// ```
+pub fn system(command: &str) -> io::Result<ExitStatus> {
+    Command::system(command).status()
+}
+
+/// Run a system/shell command, capture its output, and return the [Output].
+///
+/// Stdout and stderr are captured and stdin is not inherited.
+///
+/// # Example
+/// ```rust
+/// use system::system_output;
+///
+/// fn main() {
+///     let out = system_output("echo Hello, world!").expect("Failed to run command.");
 ///     let stdout = String::from_utf8_lossy(&out.stdout);
 ///
 ///     #[cfg(target_os = "windows")]
@@ -96,6 +115,6 @@ impl System<Command> for Command {
 ///     assert_eq!(stdout, "Hello, world!\n");
 /// }
 /// ```
-pub fn system(command: &str) -> io::Result<Output> {
+pub fn system_output(command: &str) -> io::Result<Output> {
     Command::system(command).output()
 }
