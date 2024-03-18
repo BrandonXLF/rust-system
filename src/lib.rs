@@ -1,4 +1,4 @@
-//! Crate to easily run shell commands across different platforms, similar to the C `system` command.
+//! Cross-platform crate to easily run shell commands, similar to the C `system` command.
 
 use std::{
     io,

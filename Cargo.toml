@@ -1,7 +1,8 @@
 [package]
 name = "system"
 version = "0.3.1"
-description = "Crate to easily run shell commands across different platforms."
+description = "Cross-platform crate to easily run shell commands."
+keywords = ["shell", "system", "command", "sh", "cmd"]
 repository = "https://github.com/BrandonXLF/rust-system/"
 edition = "2021"
 license = "MIT"
