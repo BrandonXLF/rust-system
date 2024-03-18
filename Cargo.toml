@@ -7,3 +7,4 @@ repository = "https://github.com/BrandonXLF/rust-system/"
 edition = "2021"
 license = "MIT"
 readme = "README.md"
+exclude = [".*"]
