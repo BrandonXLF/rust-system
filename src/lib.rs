@@ -66,7 +66,7 @@ impl System<Command> for Command {
     ///     let stdout = String::from_utf8_lossy(&out.stdout);
     ///
     ///     #[cfg(target_os = "windows")]
-    ///     assert_eq!stdout, "Hello, world!\r\n");
+    ///     assert_eq!(stdout, "Hello, world!\r\n");
     ///
     ///     #[cfg(not(target_os = "windows"))]
     ///     assert_eq!(stdout, "Hello, world!\n");
