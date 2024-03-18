@@ -1,6 +1,6 @@
 [package]
 name = "system"
-version = "0.3.2"
+version = "0.3.3"
 description = "Cross-platform crate to easily run shell commands, similar to the C system function."
 keywords = ["shell", "system", "command", "sh", "cmd"]
 repository = "https://github.com/BrandonXLF/rust-system/"
