@@ -1,6 +1,6 @@
 # system
 
-Cross-platform crate to easily run shell commands, similar to the C `system` command.
+Cross-platform crate to easily run shell commands, similar to the C `system` function.
 
 ## Usage
 
