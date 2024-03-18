@@ -1,4 +1,4 @@
-//! Crate to easily run system/shell commands across different platforms, similar to the C `system` command.
+//! Crate to easily run shell commands across different platforms, similar to the C `system` command.
 
 use std::{
     io,
@@ -8,14 +8,15 @@ use std::{
 #[cfg(target_os = "windows")]
 use std::os::windows::process::CommandExt;
 
-/// Trait to allow for the creation of system commands.
+/// Trait to allow for the creation of objects representing a shell commands.
 pub trait System<T> {
+    /// Constructs a new `T` that runs the given shell command when executed.
     fn system(command: &str) -> T;
 }
 
 impl System<Command> for Command {
     #[cfg(target_os = "windows")]
-    /// Construct a new [Command] that runs the given system command when executed.
+    /// Constructs a new [Command] that runs the given shell command when executed.
     ///
     /// See [Command::new] for the default configuration.
     ///
@@ -79,9 +80,9 @@ impl System<Command> for Command {
     }
 }
 
-/// Run a system/shell command and return the [ExitStatus].
+/// Run a shell command and return the [ExitStatus].
 ///
-/// Stdin, stdout and stderr are inherited from the parent.
+/// Stdin, stdout, and stderr are inherited from the parent.
 ///
 /// # Example
 /// ```rust
@@ -96,7 +97,7 @@ pub fn system(command: &str) -> io::Result<ExitStatus> {
     Command::system(command).status()
 }
 
-/// Run a system/shell command, capture its output, and return the [Output].
+/// Run a shell command, capture its output, and return the [Output].
 ///
 /// Stdout and stderr are captured and stdin is not inherited.
 ///

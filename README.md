@@ -1,14 +1,16 @@
 # system
 
-Crate to easily run system/shell commands across different platforms, similar to the C `system` command.
+Crate to easily run shell commands across different platforms, similar to the C `system` command.
 
 ## Usage
 
-### `system` and `system_capture`
+### `system` and `system_output`
 
-For simple use cases where you just need the result of a system command, the `system` and `system_capture` functions can be used.
+For simple use cases where you just need the result of a system command, the `system` and `system_output` functions can be used.
 
-`system` inherits the stdout, stderr, and stdin from the parent process whereas `system_capture` captures the stdout, stderr, and does not inherit a stdin.  
+`system` inherits the stdout, stderr, and stdin from the parent process whereas `system_output` captures stdout and stderr and does not inherit an stdin.
+
+An example of using `system`,
 
 ```rust
 use system::system;
@@ -18,6 +20,8 @@ fn main() {
     system("echo Hello, world!").expect("Failed to run command.");
 }
 ```
+
+An example of using `system_output`,
 
 ```rust
 use system::system_output;
@@ -36,9 +40,9 @@ fn main() {
 
 ### `std::process::Command::system`
 
-For more complex uses cases where the underlying `Command` has to be modified before running the command, the `system::System` trait is provided for `Command`.
+For more complex uses cases where the underlying `Command` has to be modified before running the command, the `system::System` trait is implemented for `Command`.
 
-The trait adds the function `Command::system` to create `Command`s that execute system/shell commands.
+The trait adds the function `Command::system` to create `Command`s that execute shell commands.
 
 For example,
 
