@@ -1,10 +1,11 @@
 [package]
 name = "system"
-version = "0.3.3"
-description = "Cross-platform crate to easily run shell commands, similar to the C system function."
-keywords = ["shell", "system", "command", "sh", "cmd"]
-repository = "https://github.com/BrandonXLF/rust-system/"
+version = "0.3.4"
+authors = ["Brandon Fowler"]
 edition = "2021"
+description = "Cross-platform crate to easily run shell commands, similar to the C system function."
+repository = "https://github.com/BrandonXLF/rust-system"
 license = "MIT"
-readme = "README.md"
+keywords = ["shell", "system", "command", "sh", "cmd"]
+categories = ["os"]
 exclude = [".*"]
